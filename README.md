@@ -1,36 +1,36 @@
 # Durbar Contest Solutions
 
-This repository contains my solutions and practice work for **Durbar Programming Contests**.
+This repository contains my solutions for the **Durbar Programming Contests**.
 
 ## 📂 Branches
 
-Each contest is maintained in a separate branch so that the solutions remain organized and independent.
+Each contest is kept in a separate branch.
 
-* `main` — Repository information and README
-* `contest1` — Solutions for Durbar Contest #1
-* `contest2` — Solutions for Durbar Contest #2
-
-## 🎯 Purpose
-
-The purpose of this repository is to:
-
-* Keep contest solutions organized
-* Track my programming progress
-* Practice problem-solving
-* Improve my JavaScript and TypeScript skills
-* Maintain solutions from different contests separately
+| Branch     | Description                                                                                                          |
+| ---------- | -------------------------------------------------------------------------------------------------------------------- |
+| `main`     | Repository information and README                                                                                    |
+| `contest1` | Solutions for Durbar Contest #1 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest1) |
+| `contest2` | Solutions for Durbar Contest #2 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest2) |
 
 ## 💻 Languages
-
-Solutions may be written in:
 
 * JavaScript
 * TypeScript
 
+## 🎯 Purpose
+
+This repository is used to:
+
+* Practice competitive programming
+* Improve problem-solving skills
+* Practice JavaScript and TypeScript
+* Keep solutions from each contest organized
+* Track my programming progress
+
 ## 🌱 Progress
 
-This repository will be updated as I participate in more programming contests and improve my problem-solving skills.
+More contest solutions will be added as I participate in future Durbar contests.
 
 ---
 
-**Happy Coding! 🚀**
+**Keep coding. Keep learning. Keep improving. 🚀**
