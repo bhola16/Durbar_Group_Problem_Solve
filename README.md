@@ -1,6 +1,6 @@
 # Durbar Contest #2
 
-Solutions for **Durbar Contest #2**.
+My solutions for **Durbar Contest #2**.
 
 ## 📝 Problems
 
@@ -12,11 +12,39 @@ Solutions for **Durbar Contest #2**.
 | D       | Find Longest Word                 | Medium     |
 | E       | Find Second Largest Unique Number | Medium     |
 
-## 💻 Language
+## 💻 Languages
 
-The solutions in this branch are written in **JavaScript**.
+Solutions are written in:
 
-## 📚 Topics Covered
+* JavaScript
+* TypeScript
+
+## 📁 Project Structure
+
+```text
+Contest 2/
+├── src/
+│   ├── hello.ts
+│   ├── p1.ts
+│   ├── p2.ts
+│   ├── p3.ts
+│   ├── p4.ts
+│   └── p5.ts
+│
+├── js/
+│   ├── p1.js
+│   ├── p2.js
+│   ├── p3.js
+│   ├── p4.js
+│   └── p5.js
+│
+├── dist/
+│   └── Compiled TypeScript files
+│
+└── tsconfig.json
+```
+
+## 📚 Topics
 
 * Strings
 * Arrays
@@ -25,12 +53,15 @@ The solutions in this branch are written in **JavaScript**.
 * Loops
 * Sorting
 * Set
-* Basic Problem Solving
+* Basic Algorithms
+* Problem Solving
 
-## 🎯 Contest Goal
+## 🎯 Contest
 
-This branch contains my solutions for **Durbar Contest #2**, maintained separately from other contest branches.
+**Durbar Contest #2**
+
+This branch contains my solutions for Contest #2 and is maintained separately from the other contest branches.
 
 ---
 
-**Keep practicing. Keep improving. 🚀**
+**Keep coding. Keep learning. Keep improving. 🚀**
