@@ -1,5 +1,3 @@
-# Durbar_Group_Problem_Solve
-
 # Durbar Contest Solutions
 
 This repository contains my solutions and practice work for **Durbar Programming Contests**.
