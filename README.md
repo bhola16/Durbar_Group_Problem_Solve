@@ -12,6 +12,7 @@ Each contest is kept in a separate branch.
 | `contest1` | Solutions for Durbar Contest #1 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest1) |
 | `contest2` | Solutions for Durbar Contest #2 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest2) |
 | `contest3` | Solutions for Durbar Contest #3 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest3) |
+| `contest4` | Solutions for Durbar Contest #4 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest4) |
 ## 💻 Languages
 
 * JavaScript
