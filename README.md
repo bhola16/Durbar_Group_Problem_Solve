@@ -14,6 +14,7 @@ Each contest is kept in a separate branch.
 | `contest3` | Solutions for Durbar Contest #3 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest3) |
 | `contest4` | Solutions for Durbar Contest #4 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest4) |
 | `contest4` | Solutions for Durbar Contest #5 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest5) |
+| `contest4` | Solutions for Durbar Contest #6 — [View Branch](https://github.com/bhola16/Durbar_Group_Problem_Solve/tree/contest6) |
 
 ## 💻 Languages
 
