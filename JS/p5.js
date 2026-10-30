@@ -1,29 +1,60 @@
+function selectBestDiscount(price, offers) {
+  let bestOffer = null;
+  let lowestPrice = price;
 
-function longestIncreasingStreak(nums) {
-  if (nums.length === 0) {
-    return 0;
+  for (const offer of offers) {
+    if (price >= offer.minPrice) {
+      let discountedPrice;
+
+      if (offer.type === "flat") {
+        discountedPrice = price - offer.value;
+      } 
+      else if (offer.type === "percent") {
+        discountedPrice = price - (price * offer.value / 100);
+      }
+
+      discountedPrice = Math.max(0, discountedPrice);
+
+      if (discountedPrice < lowestPrice) {
+        lowestPrice = discountedPrice;
+        bestOffer = offer;
+      }
+    }
   }
 
-  let count = 1;
-  let max = 1;
-
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] > nums[i - 1]) {
-      count++;
-    } else {
-      count = 1;
-    }
-
-    if (count > max) {
-      max = count;
-    }
-  }
-
-  return max;
+  return bestOffer;
 }
 
-console.log(longestIncreasingStreak([1, 2, 3, 1, 2])); // 3
-console.log(longestIncreasingStreak([5, 4, 3, 2, 1])); // 1
-console.log(longestIncreasingStreak([1, 2, 3, 4]));    // 4
-console.log(longestIncreasingStreak([]));               // 0
-console.log(longestIncreasingStreak([2, 2, 3]));       // 2
+// Test case 1
+console.log(selectBestDiscount(100, [
+  { name: "FLAT15", type: "flat", value: 15, minPrice: 50 },
+  { name: "HALF", type: "percent", value: 50, minPrice: 150 }
+]));
+
+// Output: { name: "FLAT15", type: "flat", value: 15, minPrice: 50 }
+
+
+// Test case 2
+console.log(selectBestDiscount(200, [
+  { name: "SAVE20", type: "flat", value: 20, minPrice: 100 },
+  { name: "25PERCENT", type: "percent", value: 25, minPrice: 150 }
+]));
+
+// Output: { name: "25PERCENT", type: "percent", value: 25, minPrice: 150 }
+
+
+// Test case 3
+console.log(selectBestDiscount(100, [
+  { name: "BIG", type: "flat", value: 150, minPrice: 50 },
+  { name: "SMALL", type: "flat", value: 10, minPrice: 50 }
+]));
+
+// Output: { name: "BIG", type: "flat", value: 150, minPrice: 50 }
+
+
+// Test case 4
+console.log(selectBestDiscount(100, [
+  { name: "NOT_ELIGIBLE", type: "flat", value: 50, minPrice: 200 }
+]));
+
+// Output: null

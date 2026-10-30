@@ -1,43 +1,13 @@
-function mergeSortedArrays(arr1, arr2) {
-  let i = 0;
-  let j = 0;
-  const result = [];
+function formatCountdown(totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
 
-  while (i < arr1.length && j < arr2.length) {
-    if (arr1[i] <= arr2[j]) {
-      result.push(arr1[i]);
-      i++;
-    } else {
-      result.push(arr2[j]);
-      j++;
-    }
-  }
-
-  while (i < arr1.length) {
-    result.push(arr1[i]);
-    i++;
-  }
-
-  while (j < arr2.length) {
-    result.push(arr2[j]);
-    j++;
-  }
-
-  return result;
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
-// Test cases
-console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6]));
-// Output: [1, 2, 3, 4, 5, 6]
-
-console.log(mergeSortedArrays([1, 2, 3], [4, 5, 6]));
-// Output: [1, 2, 3, 4, 5, 6]
-
-console.log(mergeSortedArrays([], [1, 2, 3]));
-// Output: [1, 2, 3]
-
-console.log(mergeSortedArrays([], []));
-// Output: []
-
-console.log(mergeSortedArrays([-5, -1, 3], [-4, 0, 2]));
-// Output: [-5, -4, -1, 0, 2, 3]
+console.log(formatCountdown(3661)); // 01:01:01
+console.log(formatCountdown(59));   // 00:00:59
+console.log(formatCountdown(3600)); // 01:00:00
+console.log(formatCountdown(0));    // 00:00:00
+console.log(formatCountdown(86400)); // 24:00:00

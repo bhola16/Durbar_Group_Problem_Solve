@@ -1,15 +1,34 @@
+function rankStudents(students) {
+  const sorted = [...students].sort((a, b) => b.score - a.score);
 
-function gcd(a, b) {
-  while (b !== 0) {
-    let temp = b;
-    b = a % b;
-    a = temp;
+  let rank = 1;
+
+  for (let i = 0; i < sorted.length; i++) {
+    if (i > 0 && sorted[i].score !== sorted[i - 1].score) {
+      rank = i + 1;
+    }
+
+    sorted[i].rank = rank;
   }
 
-  return a;
+  return sorted;
 }
 
-console.log(gcd(12, 18)); // 6
-console.log(gcd(7, 13));  // 1
-console.log(gcd(0, 5));   // 5
-console.log(gcd(0, 0));   // 0
+// Test case 1
+const students1 = [
+  { name: "Alice", score: 90 },
+  { name: "Bob", score: 95 },
+  { name: "Charlie", score: 90 },
+  { name: "David", score: 85 }
+];
+
+console.log(rankStudents(students1));
+
+// Test case 2
+const students2 = [
+  { name: "Eva", score: 100 },
+  { name: "Frank", score: 100 },
+  { name: "Grace", score: 100 }
+];
+
+console.log(rankStudents(students2));

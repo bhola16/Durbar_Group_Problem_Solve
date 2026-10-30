@@ -1,22 +1,30 @@
+function trackElevator(startFloor, minFloor, maxFloor, commands) {
+  let currentFloor = startFloor;
 
-function chunkArray(arr, size) {
-  let result = [];
-
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
+  for (const command of commands) {
+    if (command === "UP") {
+      currentFloor = Math.min(currentFloor + 1, maxFloor);
+    } 
+    else if (command === "DOWN") {
+      currentFloor = Math.max(currentFloor - 1, minFloor);
+    }
   }
 
-  return result;
+  return currentFloor;
 }
 
-console.log(chunkArray([1, 2, 3, 4, 5,6,7], 3));
-// [[1, 2], [3, 4], [5]]
+// Test case 1
+console.log(trackElevator(0, 0, 10, ["UP", "UP", "DOWN", "UP"]));
+// Output: 2
 
-console.log(chunkArray(["a", "b", "c", "d"], 2));
-// [["a", "b"], ["c", "d"]]
+// Test case 2
+console.log(trackElevator(9, 0, 10, ["UP", "UP", "UP", "DOWN"]));
+// Output: 9
 
-console.log(chunkArray([1, 2, 3], 1));
-// [[1], [2], [3]]
+// Test case 3
+console.log(trackElevator(0, 0, 5, ["DOWN", "DOWN", "UP"]));
+// Output: 1
 
-console.log(chunkArray([], 2));
-// []
+// Test case 4
+console.log(trackElevator(5, 0, 10, []));
+// Output: 5

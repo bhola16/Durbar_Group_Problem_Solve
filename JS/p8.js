@@ -1,21 +1,32 @@
+function maxTasks(tasks) {
+  // Sort tasks by finishing time
+  const sorted = [...tasks].sort((a, b) => a[1] - b[1]);
 
-function daysBetweenDates(date1, date2) {
-  const d1 = new Date(date1);
-  const d2 = new Date(date2);
+  let count = 0;
+  let lastFinish = -Infinity;
 
-  const difference = Math.abs(d1 - d2);
+  for (const [start, finish] of sorted) {
+    if (start >= lastFinish) {
+      count++;
+      lastFinish = finish;
+    }
+  }
 
-  return difference / (1000 * 60 * 60 * 24);
+  return count;
 }
 
-console.log(daysBetweenDates("2020-01-15", "2020-01-20"));
-// 5
+// Test case 1
+console.log(maxTasks([[1, 4], [2, 3], [3, 5], [7, 9]]));
+// Output: 3
 
-console.log(daysBetweenDates("2020-01-15", "2019-12-31"));
-// 15
+// Test case 2
+console.log(maxTasks([[1, 2], [2, 3], [3, 4]]));
+// Output: 3
 
-console.log(daysBetweenDates("2020-02-28", "2020-03-01"));
-// 2 (leap year)
+// Test case 3
+console.log(maxTasks([[1, 5], [2, 6], [3, 7]]));
+// Output: 1
 
-console.log(daysBetweenDates("2022-01-01", "2022-01-01"));
-// 0
+// Test case 4
+console.log(maxTasks([]));
+// Output: 0

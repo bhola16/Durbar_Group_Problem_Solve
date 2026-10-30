@@ -1,23 +1,55 @@
+function reconcileInventory(initialInventory, transactions) {
+  const inventory = { ...initialInventory };
 
-function toQueryString(params) {
-  return Object.entries(params)
-    .map(([key, value]) => {
-      return encodeURIComponent(key) + "=" + encodeURIComponent(value);
-    })
-    .join("&");
+  for (const transaction of transactions) {
+    const { productId, quantity, type } = transaction;
+
+    if (inventory[productId] === undefined) {
+      inventory[productId] = 0;
+    }
+
+    if (type === "in") {
+      inventory[productId] += quantity;
+    } 
+    else if (type === "out") {
+      inventory[productId] = Math.max(
+        0,
+        inventory[productId] - quantity
+      );
+    }
+  }
+
+  return inventory;
 }
 
-console.log(toQueryString({ search: "hello world", page: 1 }));
-// search=hello%20world&page=1
+// Test case 1
+console.log(reconcileInventory(
+  { apple: 10, banana: 5 },
+  [
+    { productId: "apple", quantity: 3, type: "in" },
+    { productId: "banana", quantity: 2, type: "out" }
+  ]
+));
+// Output: { apple: 13, banana: 3 }
 
-console.log(toQueryString({ page: 1, search: "hello world" }));
-// page=1&search=hello%20world
 
-console.log(toQueryString({ sort: "asc", limit: 10 }));
-// sort=asc&limit=10
+// Test case 2
+console.log(reconcileInventory(
+  { orange: 2 },
+  [
+    { productId: "orange", quantity: 2, type: "out" },
+    { productId: "grape", quantity: 7, type: "in" }
+  ]
+));
+// Output: { orange: 0, grape: 7 }
 
-console.log(toQueryString({}));
-// ""
 
-console.log(toQueryString({ "first name": "Bhola Bala" }));
-// first%20name=Bhola%20Bala
+// Test case 3
+console.log(reconcileInventory(
+  { mango: 5 },
+  [
+    { productId: "mango", quantity: 10, type: "out" },
+    { productId: "mango", quantity: 4, type: "in" }
+  ]
+));
+// Output: { mango: 4 }

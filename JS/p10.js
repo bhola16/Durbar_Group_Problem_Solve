@@ -1,32 +1,59 @@
+function countConnectedFriends(friendships, startPerson) {
+  const graph = {};
 
-function diagonalSums(matrix) {
-  let main = 0;
-  let secondary = 0;
-  let n = matrix.length;
+  for (const [person1, person2] of friendships) {
+    if (!graph[person1]) {
+      graph[person1] = [];
+    }
 
-  for (let i = 0; i < n; i++) {
-    main += matrix[i][i];
-    secondary += matrix[i][n - 1 - i];
+    if (!graph[person2]) {
+      graph[person2] = [];
+    }
+
+    graph[person1].push(person2);
+    graph[person2].push(person1);
   }
 
-  return { main, secondary };
+  const visited = new Set();
+  const queue = [startPerson];
+
+  visited.add(startPerson);
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+
+    for (const friend of graph[current] || []) {
+      if (!visited.has(friend)) {
+        visited.add(friend);
+        queue.push(friend);
+      }
+    }
+  }
+
+  return visited.size;
 }
 
-console.log(diagonalSums([
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-]));
-// { main: 15, secondary: 15 }
+// Test case 1
+console.log(countConnectedFriends(
+  [["Alice", "Bob"], ["Bob", "Charlie"], ["David", "Eve"]],
+  "Alice"
+));
+// Output: 3
 
-console.log(diagonalSums([
-  [1, 2],
-  [3, 4]
-]));
-// { main: 5, secondary: 5 }
+// Test case 2
+console.log(countConnectedFriends(
+  [["Alice", "Bob"], ["Charlie", "David"]],
+  "Eve"
+));
+// Output: 1
 
-console.log(diagonalSums([[5]]));
-// { main: 5, secondary: 5 }
+// Test case 3
+console.log(countConnectedFriends(
+  [["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"]],
+  "A"
+));
+// Output: 5
 
-console.log(diagonalSums([]));
-// { main: 0, secondary: 0 }
+// Test case 4
+console.log(countConnectedFriends([], "John"));
+// Output: 1

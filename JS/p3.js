@@ -1,29 +1,53 @@
+function countFilesInFolder(structure) {
+  let count = 0;
 
-function isValidEmail(email) {
-  const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
-  return pattern.test(email);
+  for (const item of structure) {
+    if (item.type === "file") {
+      count++;
+    } 
+    else if (item.type === "folder") {
+      count += countFilesInFolder(item.children);
+    }
+  }
+
+  return count;
 }
 
 // Test case 1
-console.log(isValidEmail("user@example.com"));
-// Output: true
+const structure1 = [
+  { name: "document.txt", type: "file" },
+  {
+    name: "images",
+    type: "folder",
+    children: [
+      { name: "photo1.jpg", type: "file" },
+      { name: "photo2.png", type: "file" }
+    ]
+  },
+  { name: "report.pdf", type: "file" }
+];
+
+console.log(countFilesInFolder(structure1)); // 4
 
 // Test case 2
-console.log(isValidEmail("invalid.email@"));
-// Output: false
+const structure2 = [
+  {
+    name: "src",
+    type: "folder",
+    children: [
+      { name: "index.js", type: "file" },
+      {
+        name: "components",
+        type: "folder",
+        children: [
+          { name: "Button.js", type: "file" },
+          { name: "Header.js", type: "file" }
+        ]
+      }
+    ]
+  },
+  { name: "package.json", type: "file" },
+  { name: "empty_folder", type: "folder", children: [] }
+];
 
-// Test case 3
-console.log(isValidEmail("john_doe123@mail-server.org"));
-// Output: true
-
-// Test case 4
-console.log(isValidEmail("user name@example.com"));
-// Output: false
-
-// Test case 5
-console.log(isValidEmail("user@example.c"));
-// Output: false
-
-// Test case 6
-console.log(isValidEmail("user@@example.com"));
-// Output: false
+console.log(countFilesInFolder(structure2)); // 4
